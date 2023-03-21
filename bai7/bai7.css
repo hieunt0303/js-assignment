@@ -1,0 +1,18 @@
+.wrapper{
+  width:400px;
+  margin:0 auto;
+  font-size:1.5em;
+}
+#content li{
+  border: 1px solid blue;
+  margin:3px;
+  padding:3px;
+  list-style-type: none;
+}
+#content li p{
+display: inline;
+}
+#content li button{
+  margin-left:100px;
+  vertical-align:middle;
+}
