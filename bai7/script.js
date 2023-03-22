@@ -31,6 +31,9 @@ function handleClickBtn() {
 }
 
 function handleCheckboxChange(isChecked, event) {
+  // lấy cái id của node li bên ngoài để dùng querySelector để tìm mấy cái thẻ bên trong tương ứng
+  // nếu có lỗi chắc do querySelector nó lấy nhầm hay gì rồi, xem lại nhá
+  // TH lỗi sẽ là cái querySelector nó lấy nhầm to câu lệnh bên trong của t chưa chặt chẽ.
   const parentNodeId = event.target.parentNode.id;
   console.log(parentNodeId)
   // lấy tag p bên trong
