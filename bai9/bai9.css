@@ -1,0 +1,15 @@
+.js_toogle_menu li ul {
+  display: none;
+}
+
+.js_toogle_menu li.active ul {
+  display: block;
+}
+
+.js_toogle_menu li {
+  list-style-type: '+ ';
+}
+
+.js_toogle_menu li.active {
+  list-style-type: '- ';
+}

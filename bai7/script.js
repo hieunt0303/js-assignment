@@ -1,3 +1,5 @@
+// chạy đc nhưng nhiều lúc vẫn lỗi, mà k bik fix fix=))
+
 const inputElement = document.getElementById("input1");
 const container = document.getElementById("content");
 
@@ -22,25 +24,22 @@ function handleClickBtn() {
 
   console.log(inputElement.value);
   container.innerHTML += `<li id='${newELementId}'>
-  <input type='checkbox' onChange='handleCheckboxChange(this.checked,${newELementId})'/>
-  <p>${value}</p>
-  <button onClick='handleDelete(${newELementId})'> Delete</button>
-  </li>`;
+    <input type='checkbox' onChange='handleCheckboxChange(this.checked,event)'/>
+    <p>${value}</p>
+    <button onClick='handleDelete(event)'> Delete</button>
+    </li>`;
 }
 
-function handleCheckboxChange(isCheck, containerElement) {
-  // t vẫn chưa hiểu vì sao truyền id vào func nhưng vào đây nó lại lấy ra nguyên cái element
-  // phần này tự tìm hiểu he
-  const idContainerElement = containerElement.id;
-  console.log(isCheck,containerElement, containerElement.id);
-
+function handleCheckboxChange(isChecked, event) {
+  const parentNodeId = event.target.parentNode.id;
+  console.log(parentNodeId)
   // lấy tag p bên trong
   // querySelector : đọc thêm chứ cái này dùng nhiều
-  const pElement = document.querySelector(`#${idContainerElement} > p`);
+  const pElement = document.querySelector(`#${parentNodeId} > p`);
 
   // nếu checkbox đang check
   // if(check) ~ if(check==true)
-  if (isCheck) {
+  if (isChecked) {
     pElement.style.textDecoration = "line-through";
     // dùng return để khỏi viết else ở dưới vì nó chỉ cần vào 1 trong 2 đk thôi
     return;
@@ -48,7 +47,8 @@ function handleCheckboxChange(isCheck, containerElement) {
   pElement.style.textDecoration = "none";
 }
 
-function handleDelete (containerElement){
-  // tương tự như cái trên, nó lấy nguyên cái element nên chỉ cần method remove() là đc
-  containerElement.remove()
+function handleDelete(event) {
+  const parentNode = event.target.parentNode;
+
+  parentNode.remove();
 }
